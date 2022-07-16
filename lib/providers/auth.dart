@@ -7,6 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../model/http_exception.dart';
 
+import '../secrets.dart';
+
 class Auth with ChangeNotifier {
   String? _token;
   DateTime? _expiryDate;
@@ -38,7 +40,7 @@ class Auth with ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
 
     final url = Uri.parse(
-      "https://identitytoolkit.googleapis.com/v1/accounts:$urlSegment?key=AIzaSyAsQBHvWeHq9vdfKCUROw_WS7pZhJAaMGk",
+      "https://identitytoolkit.googleapis.com/v1/accounts:$urlSegment?key=$fireBaseAPIKey",
     );
 
     try {
