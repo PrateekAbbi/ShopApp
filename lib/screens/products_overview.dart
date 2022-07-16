@@ -31,10 +31,14 @@ class _ProductsOverViewScreenState extends State<ProductsOverViewScreen> {
     });
     Provider.of<Products>(context, listen: false)
         .fetchAndSetProducts()
-        .then((_) {
-      setState(() {
-        _isLoading = false;
-      });
+        .then((data) {
+      if (data == "Unable to load your products") {
+        return;
+      } else {
+        setState(() {
+          _isLoading = false;
+        });
+      }
     });
     super.initState();
   }
